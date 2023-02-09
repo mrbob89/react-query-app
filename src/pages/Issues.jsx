@@ -1,11 +1,11 @@
 import { useState } from 'react'
-import IssuesList from "../components/IssuesList";
-import LabelList from "../components/LabelList";
-import { StatusSelect } from '../components/StatusSelect';
+import IssuesList from '../components/IssuesList'
+import LabelList from '../components/LabelList'
+import { StatusSelect } from '../components/StatusSelect'
 
 export default function Issues() {
-  const [labels, setLabels] = useState([]);
-  const [status, setStatus] = useState("")
+  const [labels, setLabels] = useState([])
+  const [status, setStatus] = useState('')
 
   return (
     <div>
@@ -17,9 +17,12 @@ export default function Issues() {
         <aside>
           <LabelList
             selected={labels}
-            toggle={label => setLabels(
-                currentLabels => currentLabels.includes(label)
-                  ? currentLabels.filter(currentLabel => currentLabel !== label)
+            toggle={(label) =>
+              setLabels((currentLabels) =>
+                currentLabels.includes(label)
+                  ? currentLabels.filter(
+                      (currentLabel) => currentLabel !== label
+                    )
                   : currentLabels.concat(label)
               )
             }
@@ -27,10 +30,10 @@ export default function Issues() {
           <h3>Status</h3>
           <StatusSelect
             value={status}
-            onChange={event => setStatus(event.target.value)}
+            onChange={(event) => setStatus(event.target.value)}
           />
         </aside>
       </main>
     </div>
-  );
+  )
 }

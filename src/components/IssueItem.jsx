@@ -1,8 +1,8 @@
-import { Link } from "react-router-dom";
-import { GoIssueOpened, GoIssueClosed, GoComment } from 'react-icons/go';
-import { relativeDate } from '../helpers/relativeDate';
-import { useUserData } from "../helpers/useUserData";
-import { Label } from "./Label";
+import { Link } from 'react-router-dom'
+import { GoIssueOpened, GoIssueClosed, GoComment } from 'react-icons/go'
+import { relativeDate } from '../helpers/relativeDate'
+import { useUserData } from '../helpers/useUserData'
+import { Label } from './Label'
 
 export function IssueItem({
   title,
@@ -21,37 +21,44 @@ export function IssueItem({
     <li>
       <div>
         {status === 'done' || status === 'cancelled' ? (
-          <GoIssueClosed style={{ color: "red" }} />
+          <GoIssueClosed style={{ color: 'red' }} />
         ) : (
-          <GoIssueOpened style={{ color: "green" }} />
+          <GoIssueOpened style={{ color: 'green' }} />
         )}
       </div>
       <div className="issue-content">
         <span>
           <Link to={`issue/${number}`}>{title}</Link>
-          {labels.map(label => (
+          {labels.map((label) => (
             <Label key={label} label={label} />
           ))}
         </span>
         <small>
-          #{number} opened {relativeDate(createdDate)}{" "}
-          {createdByUser.isSuccess ? `by ${createdByUser.data.name}` : ""}
+          #{number} opened {relativeDate(createdDate)}{' '}
+          {createdByUser.isSuccess ? `by ${createdByUser.data.name}` : ''}
         </small>
       </div>
-      {assignee ?
+      {assignee ? (
         <img
-          src={assigneeUser.isSuccess ? assigneeUser.data.profilePictureUrl : ""}
+          src={
+            assigneeUser.isSuccess ? assigneeUser.data.profilePictureUrl : ''
+          }
           className="assigned-to"
-          alt={assigneeUser.isSuccess ? `Assigned to ${assigneeUser.data.name}` : 'Avatar'}
-        /> : null}
+          alt={
+            assigneeUser.isSuccess
+              ? `Assigned to ${assigneeUser.data.name}`
+              : 'Avatar'
+          }
+        />
+      ) : null}
       <span className="comment-count">
         {commentCount > 0 ? (
           <>
-            <GoComment /> 
+            <GoComment />
             {commentCount}
           </>
         ) : null}
       </span>
     </li>
-  );
+  )
 }

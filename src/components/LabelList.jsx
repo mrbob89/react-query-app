@@ -1,4 +1,4 @@
-import { useLabelsData } from "../helpers/useLabelsData";
+import { useLabelsData } from '../helpers/useLabelsData'
 
 export default function LabelList({ selected, toggle }) {
   const labelsQuery = useLabelsData()
@@ -13,7 +13,9 @@ export default function LabelList({ selected, toggle }) {
           {labelsQuery.data.map((label) => (
             <li key={label.id}>
               <button
-                className={`label ${selected.includes(label.id) ? "selected " : ""}${label.color}`}
+                className={`label ${
+                  selected.includes(label.id) ? 'selected ' : ''
+                }${label.color}`}
                 onClick={() => toggle(label.id)}
               >
                 {label.name}
@@ -23,5 +25,5 @@ export default function LabelList({ selected, toggle }) {
         </ul>
       )}
     </div>
-  );
+  )
 }

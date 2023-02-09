@@ -1,24 +1,30 @@
-import { GoIssueOpened, GoIssueClosed } from 'react-icons/go';
-import { possibleStatus } from '../helpers/defaultData';
-import { useUserData } from '../helpers/useUserData';
-import { relativeDate } from "../helpers/relativeDate";
+import { GoIssueOpened, GoIssueClosed } from 'react-icons/go'
+import { possibleStatus } from '../helpers/defaultData'
+import { useUserData } from '../helpers/useUserData'
+import { relativeDate } from '../helpers/relativeDate'
 
 export const IssueHeader = ({
   title,
   number,
-  status = "todo",
+  status = 'todo',
   createdBy,
   createdDate,
-  comments
+  comments,
 }) => {
-  const statusObject = possibleStatus.find(pstatus => pstatus.id === status);
-  const createdUser = useUserData(createdBy);
+  const statusObject = possibleStatus.find((pstatus) => pstatus.id === status)
+  const createdUser = useUserData(createdBy)
 
   return (
     <header>
-      <h2>{title} <span>#{number}</span></h2>
+      <h2>
+        {title} <span>#{number}</span>
+      </h2>
       <div>
-        <span className={status === "done" || status === "cancelled" ? "closed" : "open"}>
+        <span
+          className={
+            status === 'done' || status === 'cancelled' ? 'closed' : 'open'
+          }
+        >
           {status === 'done' || status === 'cancelled' ? (
             <GoIssueClosed />
           ) : (
@@ -27,11 +33,11 @@ export const IssueHeader = ({
           {statusObject.label}
         </span>
         <span className="created-by">
-          {createdUser.isLoading ? "..." : createdUser.data?.name}
-        </span>{" "}
-        openned this issue {relativeDate(createdDate)} | {comments.length}{" "}
+          {createdUser.isLoading ? '...' : createdUser.data?.name}
+        </span>{' '}
+        openned this issue {relativeDate(createdDate)} | {comments.length}{' '}
         comments
       </div>
     </header>
-  );
-};
+  )
+}

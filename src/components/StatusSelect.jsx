@@ -1,10 +1,10 @@
 const possibleStatus = [
-  { id: "backlog", label: "Backlog" },
-  { id: "todo", label: "To-do" },
-  { id: "inProgress", label: "In Progress" },
-  { id: "done", label: "Done" },
-  { id: "cancelled", label: "Cancelled" },
-];
+  { id: 'backlog', label: 'Backlog' },
+  { id: 'todo', label: 'To-do' },
+  { id: 'inProgress', label: 'In Progress' },
+  { id: 'done', label: 'Done' },
+  { id: 'cancelled', label: 'Cancelled' },
+]
 export function StatusSelect({ value, onChange }) {
   return (
     <select value={value} onChange={onChange} className="status-select">
@@ -15,5 +15,5 @@ export function StatusSelect({ value, onChange }) {
         </option>
       ))}
     </select>
-  );
+  )
 }
