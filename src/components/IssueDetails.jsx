@@ -5,14 +5,18 @@ import { useUserData } from '../helpers/useUserData'
 import { IssueHeader } from './IssueHeader'
 
 function useIssueData(issueNumber) {
-  return useQuery(['issues', issueNumber], () => {
-    return fetch(`/api/issues/${issueNumber}`).then((res) => res.json())
+  return useQuery(['issues', issueNumber], ({ signal }) => {
+    return fetch(`/api/issues/${issueNumber}`, { signal }).then((res) =>
+      res.json()
+    )
   })
 }
 
 function useIssueComments(issueNumber) {
-  return useQuery(['issues', issueNumber, 'comments'], () =>
-    fetch(`/api/issues/${issueNumber}/comments`).then((res) => res.json())
+  return useQuery(['issues', issueNumber, 'comments'], ({ signal }) =>
+    fetch(`/api/issues/${issueNumber}/comments`, { signal }).then((res) =>
+      res.json()
+    )
   )
 }
 
