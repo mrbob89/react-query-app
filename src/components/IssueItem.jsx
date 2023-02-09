@@ -20,7 +20,7 @@ export function IssueItem({
   return (
     <li>
       <div>
-        {status === 'done' || status === 'canceled' ? (
+        {status === 'done' || status === 'cancelled' ? (
           <GoIssueClosed style={{ color: "red" }} />
         ) : (
           <GoIssueOpened style={{ color: "green" }} />
